@@ -26,4 +26,10 @@ public class LevelSystem : MonoBehaviour
         level += amount;
         levelUI.text = "Lv." + level;
     }
+
+    public void Die()
+    {
+        Destroy(gameObject, 1);
+        Destroy(levelUI.gameObject, 1);
+    }
 }
