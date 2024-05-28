@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class LevelUIFollow : MonoBehaviour
 {
+    [Header("References")]
     [SerializeField] private Transform player;
 
     void Update()

@@ -9,26 +9,18 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Animator animator;
     [SerializeField] private Joystick joystick;
 
-
     [Header("Settings")]
     [SerializeField] private float movementSpeed = 4f;
 
-    private float xInput;
-    private float zInput;
-
+    private Vector3 input;
     private Vector3 moveDirection;
-
-    void Start()
-    {
-        
-    }
 
     void Update()
     {
-        xInput = joystick.Horizontal * movementSpeed;
-        zInput = joystick.Vertical * movementSpeed;
+        input.x = joystick.Horizontal * movementSpeed;
+        input.z = joystick.Vertical * movementSpeed;
 
-        moveDirection = new Vector3(xInput, 0, zInput).normalized;
+        moveDirection = input.normalized;
 
         if(moveDirection != Vector3.zero)
         {
@@ -36,12 +28,12 @@ public class PlayerController : MonoBehaviour
             transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, 360 * Time.deltaTime);
         }
 
-        animator.SetFloat("xVelocity", Mathf.Abs(xInput));
-        animator.SetFloat("zVelocity", Mathf.Abs(zInput));
+        animator.SetFloat("xVelocity", Mathf.Abs(input.x));
+        animator.SetFloat("zVelocity", Mathf.Abs(input.z));
     }
 
     private void FixedUpdate()
     {
-        rb.velocity = new Vector3(xInput, rb.velocity.y, zInput);
+        rb.velocity = new Vector3(input.x, rb.velocity.y, input.z);
     }
 }

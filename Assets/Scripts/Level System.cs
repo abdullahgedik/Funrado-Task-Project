@@ -20,6 +20,7 @@ public class LevelSystem : MonoBehaviour
     {
         return levelUI;
     }
+
     public void IncreaseLevel(float amount)
     {
         level += amount;
