@@ -10,7 +10,6 @@ public class Attack : MonoBehaviour
     [SerializeField] private Animator animator;
     [SerializeField] private Transform hitCenter;
     [SerializeField] private LayerMask hitLayer;
-    [SerializeField] private string hitTag;
 
     [Header("Settings")]
     [SerializeField] private float attackCooldownDuration = 1f;
@@ -26,6 +25,7 @@ public class Attack : MonoBehaviour
         {
             if(collider.GetComponent<LevelSystem>().GetLevel() < levelSystem.GetLevel() && canAttack)
             {
+                transform.LookAt(collider.transform.position);
                 AttackObject(collider);
             }
         }
@@ -42,12 +42,6 @@ public class Attack : MonoBehaviour
     IEnumerator AttackCooldown(float duration)
     {
         yield return new WaitForSeconds(duration);
-        canAttack = true;
-    }
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.DrawWireSphere(hitCenter.position, 1f);
         canAttack = true;
     }
 }

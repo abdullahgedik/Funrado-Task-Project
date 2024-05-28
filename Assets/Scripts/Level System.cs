@@ -11,16 +11,15 @@ public class LevelSystem : MonoBehaviour
     [Header("Settings")]
     [SerializeField] private float level = 1;
 
-    private void Start()
-    {
-        levelUI.text = "Lv." + level;
-    }
-
     public float GetLevel()
     {
         return level;
     }
 
+    public TMP_Text GetLevelUI()
+    {
+        return levelUI;
+    }
     public void IncreaseLevel(float amount)
     {
         level += amount;
