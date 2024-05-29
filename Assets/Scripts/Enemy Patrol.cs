@@ -15,7 +15,7 @@ public class EnemyPatrol : MonoBehaviour
     [SerializeField] private int targetPoint = 0;
     [SerializeField] private float patrolSpeed = 2f;
 
-
+    private bool stop = false;
 
     private void Update()
     {
@@ -26,7 +26,8 @@ public class EnemyPatrol : MonoBehaviour
 
         transform.position = Vector3.MoveTowards(transform.position, patrolPoints[targetPoint].position, patrolSpeed * Time.deltaTime);
 
-        transform.LookAt(patrolPoints[targetPoint]);
+        if(!stop)
+            transform.LookAt(patrolPoints[targetPoint]);
 
         animator.SetFloat("xVelocity", patrolSpeed);
         animator.SetFloat("zVelocity", patrolSpeed);
@@ -39,5 +40,11 @@ public class EnemyPatrol : MonoBehaviour
         {
             targetPoint = 0;
         }
+    }
+
+    public void StopPatrol()
+    {
+        patrolSpeed = 0;
+        stop = true;
     }
 }

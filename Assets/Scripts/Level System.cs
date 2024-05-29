@@ -7,6 +7,7 @@ public class LevelSystem : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private TMP_Text levelUI;
+    [SerializeField] private Animator animator;
 
     [Header("Settings")]
     [SerializeField] private float level = 1;
@@ -29,7 +30,14 @@ public class LevelSystem : MonoBehaviour
 
     public void Die()
     {
-        Destroy(gameObject, 1);
-        Destroy(levelUI.gameObject, 1);
+        Invoke("SetDeathDelay", .6f);
+    }
+
+    private void SetDeathDelay()
+    {
+        levelUI.text = "";
+        animator.applyRootMotion = false;
+        animator.SetTrigger("Die");
+        Destroy(gameObject.GetComponent<LevelSystem>());
     }
 }

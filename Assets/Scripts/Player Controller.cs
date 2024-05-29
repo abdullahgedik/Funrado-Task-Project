@@ -36,4 +36,10 @@ public class PlayerController : MonoBehaviour
     {
         rb.velocity = new Vector3(input.x, rb.velocity.y, input.z);
     }
+
+    public void StopPlayer()
+    {
+        movementSpeed = 0f;
+        rb.velocity = Vector3.zero;
+    }
 }
