@@ -12,12 +12,12 @@ TagManager:
   - 
   - Water
   - UI
-  - Door
+  - 
   - Wall
   - Player
   - Enemy
-  - 
-  - 
+  - Detection
+  - Patrol Points
   - 
   - 
   - 

@@ -14,6 +14,7 @@ public class EnemyPatrol : MonoBehaviour
     [Header("Patrol Settings")]
     [SerializeField] private int targetPoint = 0;
     [SerializeField] private float patrolSpeed = 2f;
+    [SerializeField] private float rotationSpeed = 1f;
 
     private bool stop = false;
 
@@ -27,7 +28,7 @@ public class EnemyPatrol : MonoBehaviour
         transform.position = Vector3.MoveTowards(transform.position, patrolPoints[targetPoint].position, patrolSpeed * Time.deltaTime);
 
         if(!stop)
-            transform.LookAt(patrolPoints[targetPoint]);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, patrolPoints[targetPoint].rotation, rotationSpeed);
 
         animator.SetFloat("xVelocity", patrolSpeed);
         animator.SetFloat("zVelocity", patrolSpeed);

@@ -17,14 +17,21 @@ public class EnemyAttackSystem : AttackSystem
         {
             if(collider.GetComponent<LevelSystem>() != null)
             {
-                if (collider.GetComponent<LevelSystem>().GetLevel() < this.GetLevelSystem().GetLevel() && this.GetCanAttack())
-                {
-                    enemyPatrol.StopPatrol();
-                    collider.GetComponent<PlayerController>().StopPlayer();
-                    transform.LookAt(collider.transform.position);
-                    this.AttackObject(collider);
-                }
+                AttackToPlayer(collider);
             }
+        }
+    }
+
+    public void AttackToPlayer(Collider col)
+    {
+        if (col.GetComponent<LevelSystem>().GetLevel() < this.GetLevelSystem().GetLevel() && this.GetCanAttack())
+        {
+            enemyPatrol.StopPatrol();
+            col.GetComponent<PlayerController>().StopPlayer();
+            transform.LookAt(col.transform.position);
+            this.AttackObject(col);
+            col.GetComponent<Rigidbody>().useGravity = false;
+            Destroy(col);
         }
     }
 }

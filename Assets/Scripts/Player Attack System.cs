@@ -19,6 +19,7 @@ public class PlayerAttackSystem : AttackSystem
                     collider.GetComponent<EnemyPatrol>().StopPatrol();
                     transform.LookAt(collider.transform.position);
                     this.AttackObject(collider);
+                    Destroy(collider.GetComponent<EnemyLevelSystem>().GetEnemyFieldOfView());
                 }
             }
         }

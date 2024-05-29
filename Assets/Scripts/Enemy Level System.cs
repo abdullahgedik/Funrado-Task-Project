@@ -6,6 +6,7 @@ public class EnemyLevelSystem : LevelSystem
 {
     [Header("References")]
     [SerializeField] private PlayerLevelSystem pLS;
+    [SerializeField] private GameObject eFOV;
 
     private void Start()
     {
@@ -26,5 +27,10 @@ public class EnemyLevelSystem : LevelSystem
         {
             this.GetLevelUI().color = Color.white;
         }
+    }
+
+    public GameObject GetEnemyFieldOfView()
+    {
+        return eFOV;
     }
 }
