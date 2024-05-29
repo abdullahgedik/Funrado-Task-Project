@@ -39,5 +39,6 @@ public class LevelSystem : MonoBehaviour
         animator.applyRootMotion = false;
         animator.SetTrigger("Die");
         Destroy(gameObject.GetComponent<LevelSystem>());
+        transform.position = new Vector3(transform.position.x, transform.position.y - .4f, transform.position.z);
     }
 }
