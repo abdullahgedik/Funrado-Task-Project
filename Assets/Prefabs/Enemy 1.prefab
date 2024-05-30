@@ -854,7 +854,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 3294e93619ef21548b5276a6fd7c5ad9, type: 2}
+  - {fileID: 2100000, guid: 0e60034f528e5cc459dcfdd9c996a831, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1361,7 +1361,7 @@ MonoBehaviour:
     m_Bits: 128
   targetTransform: {fileID: 0}
   enemyAttackSys: {fileID: 7517900621389737990}
-  range: 4
+  range: 3
   angle: 60
   coneMaterial: {fileID: 2100000, guid: 0f21b3eed2d065645a2e15af55ba262a, type: 2}
   coneResolution: 150
@@ -1542,6 +1542,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelUI: {fileID: 0}
   animator: {fileID: 1485453468846584650}
+  rb: {fileID: 0}
   level: 4
   pLS: {fileID: 0}
   eFOV: {fileID: 8521917202041280617}
