@@ -12,15 +12,20 @@ public class PlayerAttackSystem : AttackSystem
 
         foreach (Collider collider in hitColliders)
         {
-            if(collider.GetComponent<LevelSystem>() != null)
+            AttackEnemy(collider);
+        }
+    }
+
+    public void AttackEnemy(Collider col)
+    {
+        if(col.GetComponent<LevelSystem>() != null)
+        {
+            if (col.GetComponent<LevelSystem>().GetLevel() < this.GetLevelSystem().GetLevel() && this.GetCanAttack())
             {
-                if (collider.GetComponent<LevelSystem>().GetLevel() < this.GetLevelSystem().GetLevel() && this.GetCanAttack())
-                {
-                    collider.GetComponent<EnemyPatrol>().StopPatrol();
-                    transform.LookAt(collider.transform.position);
-                    this.AttackObject(collider);
-                    Destroy(collider.GetComponent<EnemyLevelSystem>().GetEnemyFieldOfView());
-                }
+                col.GetComponent<EnemyPatrol>().StopPatrol();
+                transform.LookAt(col.transform.position);
+                this.AttackObject(col);
+                Destroy(col.GetComponent<EnemyLevelSystem>().GetEnemyFieldOfView());
             }
         }
     }

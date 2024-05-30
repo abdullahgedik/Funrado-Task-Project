@@ -8,6 +8,7 @@ public class LevelSystem : MonoBehaviour
     [Header("References")]
     [SerializeField] private TMP_Text levelUI;
     [SerializeField] private Animator animator;
+    [SerializeField] private Rigidbody rb;
 
     [Header("Settings")]
     [SerializeField] private float level = 1;
@@ -39,6 +40,6 @@ public class LevelSystem : MonoBehaviour
         animator.applyRootMotion = false;
         animator.SetTrigger("Die");
         Destroy(gameObject.GetComponent<LevelSystem>());
-        transform.position = new Vector3(transform.position.x, transform.position.y - .4f, transform.position.z);
+        rb.constraints = RigidbodyConstraints.FreezePosition;
     }
 }
