@@ -4,14 +4,16 @@ using UnityEngine;
 
 public class Key : MonoBehaviour
 {
-    [SerializeField] private GameObject door;
+    [Header("Settigs")]
+    [SerializeField] private string keyColor = "Red";
+    [SerializeField] private KeysUI keysUI;
 
     private void OnTriggerEnter(Collider other)
     {
         if(other.CompareTag("Player"))
         {
-            // Activate in UI
-            door.GetComponent<Door>().OpenDoor();
+            keysUI.ActivateImage(keyColor);
+            other.GetComponent<InventorySystem>().AddKey(keyColor);
 
             Destroy(this.gameObject);
         }

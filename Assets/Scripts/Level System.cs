@@ -41,5 +41,11 @@ public class LevelSystem : MonoBehaviour
         animator.SetTrigger("Die");
         Destroy(gameObject.GetComponent<LevelSystem>());
         rb.constraints = RigidbodyConstraints.FreezePosition;
+
+        if (gameObject.tag == "Player")
+        {
+            GameManager gameManager = FindObjectOfType<GameManager>();
+            gameManager.PlayerDied();
+        }
     }
 }
